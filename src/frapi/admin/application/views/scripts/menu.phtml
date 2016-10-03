@@ -6,25 +6,43 @@ $string = substr($this->menuItem, 1);
 $pos    = strpos($string, '/');
 $lpos   = strpos($string, '/');
 if ($pos !== false && $pos === $lpos) {
-    $data = explode('/', $string);
-    if (count($data) > 2) {
-        $this->menuItem = '/' . $data[0] . '/' . $data[1];
-        $item = '/' . $data[0];
-    } else {
-        $item = '/' . substr($string, 0, $lpos);
-    }
+  $data = explode('/', $string);
+  if (count($data) > 2) {
+    $this->menuItem = '/' . $data[0] . '/' . $data[1];
+    $item = '/' . $data[0];
+  } else {
+    $item = '/' . substr($string, 0, $lpos);
+  }
 } else {
-    $item = '/' . $string;
+  $item = '/' . $string;
 }
 
-?>	
-    <div class="navigation">
-        <a <?php echo $item == '/' ? ' class="active"' : '' ?> href="/"><?php echo $this->tr->_('DASHBOARD'); ?></a>
-        <a <?php echo $item == '/action' ? ' class="active"' : '' ?> href="/action"><?php echo $this->tr->_('ACTIONS'); ?></a>
-        <a <?php echo $item == '/mimetypes' ? ' class="active"' : '' ?> href="/mimetypes"><?php echo $this->tr->_('MIMETYPES'); ?></a>
-        <a <?php echo $item == '/errors' ? ' class="active"' : '' ?> href="/errors"><?php echo $this->tr->_('ERRORS'); ?></a>
-        <a <?php echo $item == '/partners' ? ' class="active"' : '' ?> href="/partners"><?php echo $this->tr->_('PARTNERS'); ?></a>
-        <a <?php echo $item == '/configuration' ? ' class="active"' : '' ?> href="/configuration"><?php echo $this->tr->_('CONFIGURATION'); ?></a>
-        <a <?php echo $item == '/tester' ? ' class="active"' : '' ?> href="/tester"><?php echo $this->tr->_('TESTER'); ?></a>
-		<div class="clearer"><span></span></div>
+?>
+<div id="container" class="container">
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Frapi</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a <?php echo $item == '/' ? ' class="active"' : '' ?> href="/"><?php echo $this->tr->_('DASHBOARD'); ?></a></li>
+          <li><a <?php echo $item == '/action' ? ' class="active"' : '' ?> href="/action"><?php echo $this->tr->_('ACTIONS'); ?></a></li>
+          <li><a <?php echo $item == '/mimetypes' ? ' class="active"' : '' ?> href="/mimetypes"><?php echo $this->tr->_('MIMETYPES'); ?></a></li>
+          <li><a <?php echo $item == '/errors' ? ' class="active"' : '' ?> href="/errors"><?php echo $this->tr->_('ERRORS'); ?></a></li>
+          <li><a <?php echo $item == '/partners' ? ' class="active"' : '' ?> href="/partners"><?php echo $this->tr->_('PARTNERS'); ?></a></li>
+          <li><a <?php echo $item == '/configuration' ? ' class="active"' : '' ?> href="/configuration"><?php echo $this->tr->_('CONFIGURATION'); ?></a></li>
+          <li><a <?php echo $item == '/tester' ? ' class="active"' : '' ?> href="/tester"><?php echo $this->tr->_('TESTER'); ?></a></li>
+          <li><div class="clearer"><span></span></div></li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>

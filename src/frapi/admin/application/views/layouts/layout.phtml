@@ -1,51 +1,54 @@
 <?php echo $this->render('header.phtml'); ?>
-
 <?php if($this->user) : ?>
-    <?php echo $this->render('menu.phtml'); ?>
+  <?php echo $this->render('menu.phtml'); ?>
 <?php endif; ?>
 
-<div class="main">
-	<?php echo $this->render('submenu.phtml'); ?>
-
-    <div class="content">
-
-<?php
-$messages = array();
-if ($this->message) {
-   $messages = $this->message;
-   $type = 'success';
-   $type = 'message';
-}
-if ($this->errorMessage) {
-    $messages = $this->errorMessage;
-    $type = 'error';
-}
-
-if ($this->infoMessage) {
-    $messages = $this->infoMessage;
-    $type = '';
-}
-
-if (!empty($messages)) {
-?>
-  <div id="<?php echo $type; ?>">
-    <ul class="notices">
-        <?php foreach ($messages as $m) { ?>
-            <?php
-            if (empty($m)) {
-                continue;
-            }
-            ?>
-        <li><?php echo $m; ?></li>
-        <?php } ?>
-    </ul>
-  </div>
-<?php } ?>
-
-
-        <?php echo $this->layout()->content ?>
+<div class="main container">
+  <div class="row">
+    <div class="col-md-2">
+      <?php echo $this->render('submenu.phtml'); ?>
     </div>
-	<div class="clearer"><span></span></div>
-</div>
 
-<?php echo $this->render('footer.phtml'); ?>
+    <div class="content col-md-10">
+      <?php
+      $messages = array();
+      if ($this->message) {
+        $messages = $this->message;
+        $type = 'success';
+        $type = 'message';
+      }
+      if ($this->errorMessage) {
+        $messages = $this->errorMessage;
+        $type = 'error';
+      }
+
+      if ($this->infoMessage) {
+        $messages = $this->infoMessage;
+        $type = '';
+      }
+
+      if (!empty($messages)) {
+        ?>
+        <div id="<?php echo $type; ?>">
+          <ul class="notices">
+            <?php foreach ($messages as $m) { ?>
+              <?php
+              if (empty($m)) {
+                continue;
+              }
+              ?>
+              <li><?php echo $m; ?></li>
+              <?php } ?>
+            </ul>
+          </div>
+          <?php } ?>
+
+
+          <?php echo $this->layout()->content ?>
+        </div>
+      </div>
+      <div class="clearer">
+        <span><?php echo $this->render('footer.phtml'); ?></span>
+      </div>
+    </div>
+  </div>

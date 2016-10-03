@@ -23,25 +23,27 @@
 </head>
 
 <body>
-	<div id="top">
-		<div id="header">
-			<div class="left">&nbsp;</div>
+	<div id="top" class="container-fluid well">
+		<div id="top" class="container">
+			<div id="header" class="row">
+				<div class="left col-md-8">
+					<img src="/images/frapi-transparent.png">
+				</div>
 
-			<div class="right">
-				<?php if (!is_null($this->user)) : ?>
-					<div class="inright">
-						<h2><?php echo $this->tr->_('WELCOME'); ?></h2>
-						<p><?php echo $this->tr->_('SYNCING_MESSAGE'); ?></p>
-						<button alt="<?php echo $this->tr->_('SYNCRONIZE_TITLE'); ?>" id="sync"><?php echo $this->tr->_('SYNC')?></button>
-					</div>
-				<?php else: ?>
-					<div class="inright">
-						<h2><?php echo $this->tr->_('WELCOME'); ?></h2>
-						<p><?php echo $this->tr->_('YOU_ARE_USING_FRAPI'); ?></p>
-					</div>
-				<?php endif;?>
+				<div class="right col-md-4">
+					<?php if (!is_null($this->user)) : ?>
+						<div class="inright">
+							<h2><?php echo $this->tr->_('WELCOME'); ?></h2>
+							<p><?php echo $this->tr->_('SYNCING_MESSAGE'); ?></p>
+							<button alt="<?php echo $this->tr->_('SYNCRONIZE_TITLE'); ?>" id="sync" class="btn btn-primary"><?php echo $this->tr->_('SYNC')?></button>
+						</div>
+					<?php else: ?>
+						<div class="inright">
+							<h2><?php echo $this->tr->_('WELCOME'); ?></h2>
+							<p><?php echo $this->tr->_('YOU_ARE_USING_FRAPI'); ?></p>
+						</div>
+					<?php endif;?>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<div id="container">

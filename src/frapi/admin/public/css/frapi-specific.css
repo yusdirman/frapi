@@ -1,25 +1,3 @@
-form {
-	background-color: rgb(240, 246, 250);
-	border-top: 1px rgb(151, 170, 182) solid;
-	border-bottom: 1px rgb(151, 170, 182) solid;
-	letter-spacing: 0.1em;
-	line-height: 2.8em;
-	padding-left: 0.9em;
-	padding-right: 0.9em;
-	text-align: left;
-	margin-bottom: 30px;
-}
-
-form label {
-  display: inline-block;
-  line-height: 1.8;
-  vertical-align: top;
-}
-form label {
-  width: 180px; /* Width of labels */
-}
-
-
 /**
  * Table#list Styles
  *
@@ -51,7 +29,7 @@ table#list{
 	table#list tr td+td{
 		border-left: 1px rgb(171, 190, 202) solid;
 	}
-	
+
 	table#list thead tr .header {
 		padding-right: 25px !important;
 		background-image: url(../gifs/bg.gif);
@@ -68,7 +46,7 @@ table#list{
 	table#list thead tr .headerSortDown, table#list thead tr .headerSortUp {
 	    background-color: rgb(171, 190, 202);
 	}
-	
+
 /**
  * Messages and Alerts
  *
@@ -120,14 +98,14 @@ table.doc-table{
 	table.doc-table tr td+td{
 		border-left: 1px rgb(171, 190, 202) solid;
 	}
-	
+
 /**
  * /Tester Styles
  */
 #params-container {
 	display: inline-block;
 	width: 300px
-}		
+}
 	#params {
 	}
 		#params p {
@@ -136,7 +114,7 @@ table.doc-table{
 			#params input {
 				width: 250px
 			}
-	
+
 	#add {
 		display: inline-block;
 		margin-left: 25px;
