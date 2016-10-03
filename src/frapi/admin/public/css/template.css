@@ -69,7 +69,7 @@ h1,h2,h3 {padding-top: 6px;}
 	font-size: 1.2em;
 	margin: 0 auto;
 	padding: 0 10px 10px;
-	width: 780px;
+	width: 1080px;
 }
 
 /* header */
@@ -84,11 +84,11 @@ h1,h2,h3 {padding-top: 6px;}
 	height: 150px;
 	margin: 0 auto;
 	padding: 10px 10px 5px;
-	width: 780px;
+	width: 1080px;
 }
 #header .left, #header .right {
 	color: #FFF;
-	height: 150px;	
+	height: 150px;
 }
 
 #header .inright {
@@ -100,9 +100,9 @@ h1,h2,h3 {padding-top: 6px;}
     height:150px;
 }
 
-#header .right button { 
-    width: 100; 
-    height: 33%; 
+#header .right button {
+    width: 100;
+    height: 33%;
     font-size: 20px;
     cursor: pointer;
     margin-top:2px !important;
@@ -119,18 +119,18 @@ h1,h2,h3 {padding-top: 6px;}
 	background-color: #A6B3BB;
 	font: normal 2.8em "Trebuchet MS",sans-serif;
 	line-height: 150px;
-	text-align: center;	
-	width: 564px;
+	text-align: center;
+	width: 764px;
 }
 #header .right {
 	overflow: auto;
-	width: 212px;
+	width: 312px;
 }
 #header .right p,#header .right h2 {padding: 0 16px;}
 #header .right h2 {padding-top: 16px; font: normal 1.6em "Trebuchet MS",sans-serif;}
 
 /* navigation */
-.navigation {	
+.navigation {
 	background: #D9E1E5 url(/images/template/nav.gif);
 	border: 1px solid #DFEEF7;
 	border-color: #DFEEF7 #CFDEE7;
@@ -183,7 +183,7 @@ h1,h2,h3 {padding-top: 6px;}
 }
 .sidenav li a:hover, .active {
 	background: #F0F0EB;
-	color: #654;	
+	color: #654;
 }
 
 /* content */
