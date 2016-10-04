@@ -1,29 +1,85 @@
 
-<h2><?php echo $this->tr->_('EDITING_ACTION'); ?>: <?php echo $this->name; ?></h2>
-<br />
-<br />
-<form method="post" style="width: 750px; line-height:  1.2em; letter-spacing: 0;">
-  <input type="submit" value="<?php echo $this->tr->_('SAVE'); ?>" />
-  <br />
-  <textarea name="code" style="position: relative; width: 687px; margin-left: 45px; height: 500px; font-size: 11px; margin-top: 35px; font-family: 'Monaco','Menlo','Ubuntu Mono','Droid Sans Mono','Consolas',monospace; font-size: 11px;"><?php echo $this->content; ?></textarea>
-  <div id="editor" style="position: relative; width: 750px; height: 500px; font-size: 11px; margin-top: 35px; background-color: #FFF"></div>
-  <br /><br /><br />
+<h2>
+  <?php echo $this->tr->_('EDITING_ACTION'); ?>: <?php echo $this->name; ?>
+</h2>
+<style>
+textarea[name='code']{
+  position: relative;
+  margin-left: 45px;
+  height: 500px;
+  font-size: 11px;
+  margin-top: 35px;
+  font-family: 'Monaco','Menlo','Ubuntu Mono','Droid Sans Mono','Consolas',monospace; font-size: 11px;
+}
 
-  <input type="submit" value="<?php echo $this->tr->_('SAVE'); ?>" />
-</form>
+#editor{
+  position: relative;
+  height: 500px;
+  font-size: 11px;
+  margin-top: 35px;
+  overflow: hidden;
+}
+
+.ace_gutter{
+  padding: 1px;
+}
+
+.ace_scroller{
+  padding: 1em;
+}
+
+.ace_sb{
+  display: none;
+}
+
+</style>
+<div class="row-fluid">
+  <form method="post">
+    <div class="form-group">
+      <input type="submit" value="<?php echo $this->tr->_('SAVE'); ?>" />
+    </div>
+    <div class="form-group">
+      <textarea name="code" style=""><?php echo $this->content; ?></textarea>
+      <div id="editor" style="">
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="<?php echo $this->tr->_('SAVE'); ?>" />
+    </div>
+  </form>
+</div>
+
 <script type="text/javascript" src="/js/ace/build/src/ace.js"></script>
- <script src="/js/ace/build/src/theme-textmate.js" type="text/javascript" charset="utf-8"></script>
- <script src="/js/ace/build/src/mode-php.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/ace/build/src/theme-textmate.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/ace/build/src/theme-solarized_light.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/ace/build/src/mode-php.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-    window.onload = function() {
-        var editor = ace.edit("editor");
-        var textarea = $('textarea[name="code"]').hide();
-        editor.setTheme("ace/theme/textmate");
-        var PHPMode = require("ace/mode/php").Mode;
-        editor.getSession().setMode(new PHPMode());
-        editor.getSession().setValue(textarea.val());
-        editor.getSession().on('change', function(){
-            textarea.val(editor.getSession().getValue());
-        });
-    };
+window.onload = function() {
+  var editor = ace.edit("editor");
+  var textarea = $('textarea[name="code"]');
+  var code = textarea.val();
+  var lineHeight = textarea.css('line-height');
+  var totalLines = code.split('\n').length;
+  var editorHeight = parseInt(lineHeight)*parseInt(totalLines);
+
+  console.log("total height : " + editorHeight + "px");
+  textarea.hide();
+  editor.setTheme("ace/theme/solarized_light");
+  $("#editor").height(editorHeight);
+  var PHPMode = require("ace/mode/php").Mode;
+  editor.getSession().setMode(new PHPMode());
+  editor.getSession().setValue(code);
+
+  editor.getSession().on('change', function(){
+    var editorCode = editor.getSession().getValue();
+    var lineNum = editorCode.split("\n").length;
+    $("#editor").height(parseInt(lineNum)*15);
+    textarea.val(editorCode);
+    editor.resize();
+  });
+
+  function getEditorHeight(){
+
+  }
+};
 </script>

@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     function deleteButton()
     {
-        $('a.delete-button').live('click', function () {
+        $('a.delete-button').on('click', function () {
             id = $(this).parent().find('input:hidden').val();
             $(this).parent().parent().remove();
 

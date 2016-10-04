@@ -1,51 +1,79 @@
-<?php echo $this->render('header.phtml'); ?>
-
-<?php if($this->user) : ?>
-    <?php echo $this->render('menu.phtml'); ?>
-<?php endif; ?>
-
-<div class="main">
-	<?php echo $this->render('submenu.phtml'); ?>
-
-    <div class="content">
-
-<?php
-$messages = array();
-if ($this->message) {
-   $messages = $this->message;
-   $type = 'success';
-   $type = 'message';
-}
-if ($this->errorMessage) {
-    $messages = $this->errorMessage;
-    $type = 'error';
-}
-
-if ($this->infoMessage) {
-    $messages = $this->infoMessage;
-    $type = '';
-}
-
-if (!empty($messages)) {
-?>
-  <div id="<?php echo $type; ?>">
-    <ul class="notices">
-        <?php foreach ($messages as $m) { ?>
-            <?php
-            if (empty($m)) {
-                continue;
-            }
-            ?>
-        <li><?php echo $m; ?></li>
-        <?php } ?>
-    </ul>
-  </div>
-<?php } ?>
-
-
-        <?php echo $this->layout()->content ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <?php echo $this->render('header.phtml'); ?>
+</head>
+<body>
+  <div class="container">
+    <div class="row panel" id="top">
+      <div class="col-md-8">
+        <img src="/images/frapi-transparent.png" style="width: 50%; height: auto;">
+      </div>
+      <div class="col-md-4">
+        <?php if (!is_null($this->user)) : ?>
+          <h3><?php echo $this->tr->_('WELCOME'); ?></h3>
+          <p><?php echo $this->tr->_('SYNCING_MESSAGE'); ?></p>
+          <button class="btn btn-sm btn-primary" alt="<?php echo $this->tr->_('SYNCRONIZE_TITLE'); ?>" id="sync"><?php echo $this->tr->_('SYNC')?>
+          </button>
+        <?php else: ?>
+          <h2><?php echo $this->tr->_('WELCOME'); ?></h2>
+          <p><?php echo $this->tr->_('YOU_ARE_USING_FRAPI'); ?></p>
+        <?php endif;?>
+      </div>
     </div>
-	<div class="clearer"><span></span></div>
-</div>
+    <div id="container" class="row">
+      <?php if($this->user) : ?>
+        <?php echo $this->render('menu.phtml'); ?>
+      <?php endif; ?>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <?php echo $this->render('submenu.phtml'); ?>
+    </div>
+    <div class="row">
 
-<?php echo $this->render('footer.phtml'); ?>
+      <?php
+      $messages = array();
+      if ($this->message) {
+        $messages = $this->message;
+        $type = 'success';
+        $type = 'message';
+      }
+      if ($this->errorMessage) {
+        $messages = $this->errorMessage;
+        $type = 'error';
+      }
+
+      if ($this->infoMessage) {
+        $messages = $this->infoMessage;
+        $type = '';
+      }
+
+      if (!empty($messages)) {
+        ?>
+        <div id="<?php echo $type; ?>">
+          <ul class="notices">
+            <?php foreach ($messages as $m) { ?>
+              <?php
+              if (empty($m)) {
+                continue;
+              }
+              ?>
+              <li><?php echo $m; ?></li>
+              <?php } ?>
+            </ul>
+          </div>
+          <?php } ?>
+
+
+          <?php echo $this->layout()->content ?>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <?php echo $this->render('footer.phtml'); ?>
+    </div>
+  </body>
+  </html>

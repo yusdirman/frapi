@@ -10,7 +10,7 @@
     <head>
         <title>API Documentation</title>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/scripts/jquery-1.9.0.min.js"></script>
         <style type="text/css">
         body {
             font-family: 'Droid Sans', serif;
@@ -24,16 +24,16 @@
         }
         p.description {
         	padding: 5px;
-        	padding-left:10px; 
+        	padding-left:10px;
         	border-left: 3px solid #0F6AB4;
         	font-size: 16px;
         	color: #000;
         	font-style: italic;
         }
-        
+
         p.error-description {
         	padding: 5px;
-        	padding-left:10px; 
+        	padding-left:10px;
         	border-left: 3px solid #a41e22;
         	font-size: 16px;
         	color: #000;
@@ -43,13 +43,13 @@
         .doc-subdata{
         	margin-left: 2em;
         }
-        
+
         .action, .error {
             background: #e7f0f7;
             width: 100%;
             position: relative;
         }
-        
+
         .action .top, .error .top {
             position: relative;
             float: left;
@@ -57,7 +57,7 @@
             height: 30px;
             margin-bottom:25px;
         }
-        
+
         .action .top #name, .error .top #name {
             width: 8%;
             float: left;
@@ -72,31 +72,31 @@
             padding-top: 10px;
             cursor: pointer;
         }
-        
+
         .error .top #name {
             background: #a41e22;
         }
-    
-        
-        
+
+
+
         .action .top #route, .error .top #route  {
             width: 90%;
             height: 30px;
             background: #e7f0f7;
             border: 1px solid #c3d9ec;
             position: relative;
-            float: left;       
+            float: left;
             padding-left: 10px;
             padding-top: 10px;
             font-size: 16px;
             cursor: pointer;
         }
-        
+
         .error .top #route {
             background: #f5e8e8;
             border: 1px solid #e8c6c7;
         }
-        
+
         .action .stub{
             background: #e7f0f7;
             display: none;
@@ -106,7 +106,7 @@
             width: 99%;
             margin-bottom:25px;
         }
-        
+
         .error .stub {
             background: #f5e8e8;
             display: none;
@@ -116,43 +116,43 @@
             width: 99%;
             margin-bottom:25px;
         }
-        
+
         .action .stub .doc-subdata {
             color: #0F6AB4;
         }
-        
+
         .error .stub .doc-subdata {
             color: #a41e22;
         }
-        
+
         .doc-table tr th#param-name, .doc-table tr td#param-name {
             width: 100px;
             padding: 10px;
             text-align: center;
         }
-        
+
         .action .stub .doc-subdata .doc-table tr th{
             border-bottom: 2px solid #0F6AB4;
         }
-        
+
         .action .stub .doc-subdata .doc-table tr td {
             border-bottom: 1px solid #0F6AB4;
         }
-        
+
         .error .stub .doc-subdata .doc-table tr td {
             border-bottom: 1px solid #a41e22;
         }
-        
+
         .error .stub .doc-subdata .doc-table tr th{
             border-bottom: 2px solid #a41e22;
         }
-        
+
         .doc-table tr th#param-required, .doc-table tr td#param-required {
             width: 70%;
             padding: 10px;
             text-align: center;
         }
-        
+
         .doc-table tr td#param-name {
             color: #000;
         }
@@ -166,7 +166,7 @@
                     <span id="name" hash="<?php echo $action['hash']; ?>"><?php echo $action['name'] ?></span>
                     <span id="route"><?php echo isset($action['route']) ? $action['route'] : 'No Route'; ?></span>
                   </div>
-                
+
                   <div class="stub" id="action-<?php echo $action['hash']; ?>">
 
                 <div class="doc-subdata">
@@ -178,16 +178,16 @@
                                 <th id="param-required">Required</th>
                             </tr>
                             <?php foreach ($action['parameters'] as $key => $param): ?>
-                                <?php 
-                                if (is_array($param) && isset($param[0])) : 
+                                <?php
+                                if (is_array($param) && isset($param[0])) :
                                     foreach ($param as $subkey => $subparam) :
                                 ?>
                                 <tr>
                                     <td id="param-name"><?php echo $subparam['name'] ?></td>
                                     <td id="param-required">
-                                        <?php 
-                                            echo isset($subparam['required']) && $subparam['required'] == '1' 
-                                                ? '<strong>&#10003;</strong>' : '' 
+                                        <?php
+                                            echo isset($subparam['required']) && $subparam['required'] == '1'
+                                                ? '<strong>&#10003;</strong>' : ''
                                         ?>
                                     </td>
                                 </tr>
@@ -195,9 +195,9 @@
                                 <tr>
                                     <td><?php echo $param['name']; ?></td>
                                     <td id="param-required">
-                                        <?php 
-                                            echo isset($subparam['required']) && $subparam['required'] == '1' 
-                                                ? '<strong>&#10003;</strong>' : '' 
+                                        <?php
+                                            echo isset($subparam['required']) && $subparam['required'] == '1'
+                                                ? '<strong>&#10003;</strong>' : ''
                                         ?>
                                     </td>
                                 </tr>
@@ -244,7 +244,7 @@
         <h1>Enabled Output Types</h1>
         <p>
         <?php if (count($this->doc_data['output-types'])): ?>
-            The following output/content types are supported: 
+            The following output/content types are supported:
                 <?php $types = array();?>
                 <?php foreach ($this->doc_data['output-types'] as $type): ?>
                     <?php if ($type['enabled'] == '1'): ?>
@@ -256,31 +256,31 @@
             There is currently no enabled output format.
         <?php endif;?>
         </p>
-        
+
         <?php if ($this->doc_data['base_url']): ?>
         <h1>API Endpoint</h1>
         <p>API Endpoint: <strong>http://<?php echo $this->doc_data['base_url']; ?></strong></p>
         <?php endif; ?>
-        <p><br /><br /></p> 
+        <p><br /><br /></p>
         <p>The idea came from the <a href="https://twitter.com/wordnikapi">@wordnikapi</a> documentation style.</p>
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $('.action #name').live('click', function() {
+                $('.action #name').on('click', function() {
                     var hash = $(this).attr('hash');
                     $('#action-' + hash).slideToggle();
                 });
-                
-                $('.action #route').live('click', function() {
+
+                $('.action #route').on('click', function() {
                     var hash = $(this).parent().find('#name').attr('hash');
                     $('#action-' + hash).slideToggle();
                 });
-                
-                $('.error #name').live('click', function() {
+
+                $('.error #name').on('click', function() {
                     var hash = $(this).attr('hash');
                     $('#error-' + hash).slideToggle();
                 });
-                
-                $('.error #route').live('click', function() {
+
+                $('.error #route').on('click', function() {
                     var hash = $(this).parent().find('#name').attr('hash');
                     $('#error-' + hash).slideToggle();
                 });
